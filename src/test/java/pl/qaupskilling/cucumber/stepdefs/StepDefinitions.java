@@ -4,6 +4,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class StepDefinitions {
 
@@ -19,6 +21,8 @@ public class StepDefinitions {
 
     @Then("I see some reports generated in target folder")
     public void i_see_some_reports_generated_in_target_folder() {
+        Logger logger = LoggerFactory.getLogger(StepDefinitions.class);
+        logger.info("Tu tu tu ru tu");
         System.out.println("Then step");
         Assert.assertTrue(true);
     }
