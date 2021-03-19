@@ -12,8 +12,8 @@
         <compiler.plugin.version>3.8.1</compiler.plugin.version>
         <surefire.plugin.version>2.22.2</surefire.plugin.version>
         <failsafe.plugin.version>2.22.2</failsafe.plugin.version>
-        <junit.version>5.5.2</junit.version>
-        <junit.platform.version>1.5.2</junit.platform.version>
+        <junit.version>5.7.0</junit.version>
+        <junit.platform.version>1.7.1</junit.platform.version>
         <selenium.version>3.141.59</selenium.version>
         <cucumber.version>6.9.1</cucumber.version>
         <slf4j.version>1.7.30</slf4j.version>
@@ -22,7 +22,7 @@
         <hamcrest.version>1.3</hamcrest.version>
     </properties>
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
+        <!-- slf4j -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
@@ -142,7 +142,7 @@
                 <version>${failsafe.plugin.version}</version>
                 <configuration>
                     <includes>
-                        <include>**/qaupskilling/**/*.java</include>
+                        <include>**/paulouskin/**/*.java</include>
                     </includes>
                 </configuration>
                 <executions>

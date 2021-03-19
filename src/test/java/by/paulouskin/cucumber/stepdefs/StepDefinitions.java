@@ -1,4 +1,4 @@
-package pl.qaupskilling.cucumber.stepdefs;
+package by.paulouskin.cucumber.stepdefs;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

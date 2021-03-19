@@ -1,4 +1,4 @@
-package pl.qaupskilling.cucumber.runners;
+package by.paulouskin.cucumber.runners;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -6,8 +6,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features",
-        glue = "pl.qaupskilling.cucumber.stepdefs",
+        features = "src/test/resources/features/todo",
+        glue = "by.paulouskin.cucumber.stepdefs.todo",
         plugin = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber-pretty",
