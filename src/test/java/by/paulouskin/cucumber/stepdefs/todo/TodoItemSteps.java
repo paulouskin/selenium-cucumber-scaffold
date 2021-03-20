@@ -1,6 +1,8 @@
 package by.paulouskin.cucumber.stepdefs.todo;
 
-import by.paulouskin.todo.core.CTodoItem;
+import by.paulouskin.todo.abstraction.AbstractTodoItem;
+import by.paulouskin.todo.core.info.CTodoInfo;
+import by.paulouskin.todo.core.item.CTodoItem;
 import by.paulouskin.todo.enums.TodoStatus;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,7 +14,7 @@ import java.util.Date;
 
 public class TodoItemSteps extends BaseSteps{
 
-    private CTodoItem todo;
+    private AbstractTodoItem todo;
     private String todoTitle;
 
     @Given("a new todo item")
@@ -22,22 +24,22 @@ public class TodoItemSteps extends BaseSteps{
 
     @When("I set todo item title to {string}")
     public void i_set_todo_item_title_to(String string) {
-        todo.setTitle(string);
+        todo.setData(new CTodoInfo(string));
     }
 
     @When("I get todo item title")
     public void i_get_todo_item_title() {
-        todoTitle = todo.getTitle();
+        todoTitle = ((CTodoItem)todo).getTitle();
     }
 
     @Then("todo item title is {string}")
     public void todo_item_title_is(String string) {
-        Assert.assertTrue(todo.getTitle().equalsIgnoreCase(string));
+        Assert.assertTrue(((CTodoItem)todo).getTitle().equalsIgnoreCase(string));
     }
 
-    @Then("an empty string have been returned")
-    public void an_empty_string_have_been_returned() {
-        Assert.assertTrue(todo.getTitle().isEmpty());
+    @Then("todo item has an empty title")
+    public void todo_item_has_an_empty_title() {
+        Assert.assertTrue(((CTodoItem)todo).getTitle().isEmpty());
     }
 
     @Then("todo item status is {string}")

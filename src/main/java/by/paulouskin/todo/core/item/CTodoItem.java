@@ -1,47 +1,27 @@
-package by.paulouskin.todo.core;
+package by.paulouskin.todo.core.item;
 
+import by.paulouskin.todo.abstraction.AbstractTodoItem;
+import by.paulouskin.todo.core.info.CTodoInfo;
 import by.paulouskin.todo.enums.TodoStatus;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class CTodoItem {
+public class CTodoItem extends AbstractTodoItem<CTodoInfo> {
 
-    private String title;
 
-    public String getCreationDate() {
-        return creationDate;
-    }
-
-    private String creationDate;
-    private TodoStatus status;
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     public CTodoItem(String title) {
-        this.title = title;
+        this.data = new CTodoInfo(title);
         creationDate = dateFormat.format(new Date());
         status = TodoStatus.PENDING;
     }
 
     public CTodoItem() {
+        this.data = new CTodoInfo();
         creationDate = dateFormat.format(new Date());
         status = TodoStatus.PENDING;
-    }
-
-    public String getTitle() {
-        return title == null ? "" : title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public TodoStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(TodoStatus status) {
-        this.status = status;
     }
 
     public void complete() {
@@ -55,4 +35,13 @@ public class CTodoItem {
             this.status = TodoStatus.PENDING;
         }
     }
+
+    public String getTitle() {
+        return this.data.getTitle();
+    }
+
+    public void setTitle(String title) {
+        this.data.setTitle(title);
+    }
+
 }

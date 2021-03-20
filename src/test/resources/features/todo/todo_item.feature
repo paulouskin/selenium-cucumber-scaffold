@@ -7,7 +7,7 @@ Feature: Todo item base properties verification
 
   Scenario: New todo item have an empty title
     Given a new todo item
-    Then an empty string have been returned
+    Then todo item has an empty title
 
   Scenario: New todo item status is "PENDING"
     Given a new todo item
@@ -16,3 +16,7 @@ Feature: Todo item base properties verification
   Scenario: New todo item creation date is equal to today's date
     Given a new todo item
     Then todo item date is today's date
+
+  Scenario: Todo item toggle status
+  Scenario: Todo item complete feature
+  Scenario: Create todo item with a title
