@@ -8,10 +8,6 @@ public class CTodoInfo {
         this.title = title;
     }
 
-    public CTodoInfo() {
-        this.title = "";
-    }
-
     public String getTitle() {
         return title;
     }

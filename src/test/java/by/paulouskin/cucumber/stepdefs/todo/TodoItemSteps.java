@@ -4,18 +4,24 @@ import by.paulouskin.todo.abstraction.AbstractTodoItem;
 import by.paulouskin.todo.core.info.CTodoInfo;
 import by.paulouskin.todo.core.item.CTodoItem;
 import by.paulouskin.todo.enums.TodoStatus;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.Instant;
 
 public class TodoItemSteps extends BaseSteps{
 
     private AbstractTodoItem todo;
     private String todoTitle;
+
+    @Before
+    public void setUp() {
+        logger.info("Greeting from Cucumber hooks - your scenario setup can be here ;-)");
+    }
 
     @Given("a new todo item")
     public void a_new_todo_item() {
@@ -50,11 +56,18 @@ public class TodoItemSteps extends BaseSteps{
 
     @Then("todo item date is today's date")
     public void todo_item_date_is_today_s_date() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        String today = dateFormat.format(new Date());
-        logger.info("Expected date is " + today);
-        Assert.assertTrue(todo.getCreationDate().equalsIgnoreCase(today));
+        var dateFormatter = todo.getDateFormat();
+        var today = Instant.now();
+        String todayDate = dateFormatter.format(today);
+        logger.info("Expected date is " + todayDate);
+        Assert.assertTrue(todo.getCreationDate().equalsIgnoreCase(todayDate));
 
+    }
+
+
+    @After
+    public void tearDown() {
+        logger.info("Time to clean up after scenarios - Cucumber hook bye-bye.");
     }
 
 }

@@ -2,16 +2,21 @@ package by.paulouskin.todo.abstraction;
 
 import by.paulouskin.todo.enums.TodoStatus;
 
-import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
 public abstract class AbstractTodoItem<T> {
 
     protected T data;
-    protected String creationDate;
+    protected final Instant creationDate;
     protected TodoStatus status;
-    protected SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    private String datePattern = "yyyy-MM-dd HH:mm";
+    protected DateTimeFormatter dateFormat = DateTimeFormatter
+            .ofPattern(datePattern).withZone(ZoneId.systemDefault());
 
     public AbstractTodoItem() {
+        creationDate = Instant.now();
     }
 
     public T getData() {
@@ -23,11 +28,7 @@ public abstract class AbstractTodoItem<T> {
     }
 
     public String getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(String creationDate) {
-        this.creationDate = creationDate;
+        return dateFormat.format(creationDate);
     }
 
     public TodoStatus getStatus() {
@@ -38,14 +39,14 @@ public abstract class AbstractTodoItem<T> {
         this.status = status;
     }
 
-    public SimpleDateFormat getDateFormat() {
+    public DateTimeFormatter getDateFormat() {
         return dateFormat;
     }
 
-    public void setDateFormat(SimpleDateFormat dateFormat) {
+    public void setDateFormat(DateTimeFormatter dateFormat) {
         this.dateFormat = dateFormat;
     }
 
-    public abstract void toggle();
-    public abstract void complete();
+    protected abstract void toggle();
+    protected abstract void complete();
 }
