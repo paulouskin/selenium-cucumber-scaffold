@@ -18,5 +18,9 @@ Feature: Todo item base properties verification
     Then todo item date is today's date
 
   Scenario: Todo item toggle status
+
+  Scenario: Set item priority
+
   Scenario: Todo item complete feature
+
   Scenario: Create todo item with a title

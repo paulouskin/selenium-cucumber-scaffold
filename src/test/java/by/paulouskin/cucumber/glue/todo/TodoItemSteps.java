@@ -1,4 +1,4 @@
-package by.paulouskin.cucumber.stepdefs.todo;
+package by.paulouskin.cucumber.glue.todo;
 
 import by.paulouskin.todo.abstraction.AbstractTodoItem;
 import by.paulouskin.todo.core.info.CTodoInfo;
@@ -6,6 +6,7 @@ import by.paulouskin.todo.core.item.CTodoItem;
 import by.paulouskin.todo.enums.TodoStatus;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -19,8 +20,8 @@ public class TodoItemSteps extends BaseSteps{
     private String todoTitle;
 
     @Before
-    public void setUp() {
-        logger.info("Greeting from Cucumber hooks - your scenario setup can be here ;-)");
+    public void setUp(Scenario scenario) {
+        logger.info(String.format("You are running '%s' scenario", scenario.getName()));
     }
 
     @Given("a new todo item")
@@ -66,8 +67,9 @@ public class TodoItemSteps extends BaseSteps{
 
 
     @After
-    public void tearDown() {
-        logger.info("Time to clean up after scenarios - Cucumber hook bye-bye.");
+    public void tearDown(Scenario scenario) {
+        logger.info(String.format("Scenario '%s' run with status '%s' ",
+                scenario.getName(), scenario.getStatus().toString()));
     }
 
 }

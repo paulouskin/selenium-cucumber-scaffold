@@ -1,4 +1,4 @@
-package by.paulouskin.cucumber.stepdefs;
+package by.paulouskin.cucumber.glue;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

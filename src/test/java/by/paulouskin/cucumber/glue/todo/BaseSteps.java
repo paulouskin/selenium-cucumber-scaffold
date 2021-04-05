@@ -1,7 +1,5 @@
-package by.paulouskin.cucumber.stepdefs.todo;
+package by.paulouskin.cucumber.glue.todo;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

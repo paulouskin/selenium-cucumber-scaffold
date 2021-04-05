@@ -1,4 +1,4 @@
-package by.paulouskin.cucumber.runners;
+package by.paulouskin.cucumber.runners.todo;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/resources/features/todo",
-        glue = "by.paulouskin.cucumber.stepdefs.todo",
+        glue = "by.paulouskin.cucumber.glue",
         plugin = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber-pretty",
@@ -15,5 +15,5 @@ import org.junit.runner.RunWith;
                 "rerun:target/cucumber-reports/rerun.txt"
         }
 )
-public class CucumberSampleTestRunner {
+public class CucumberTodoTestRunner {
 }
