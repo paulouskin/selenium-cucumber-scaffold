@@ -1,3 +1,4 @@
+@item
 Feature: Todo item base properties verification
 
   Scenario: Create todo item and assign title

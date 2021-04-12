@@ -1,3 +1,4 @@
+@list
 Feature: Todo list add items feature
 
   Background:Create an empty todo list

@@ -19,7 +19,7 @@ public class TodoItemSteps extends BaseSteps{
     private AbstractTodoItem todo;
     private String todoTitle;
 
-    @Before
+    @Before("@item")
     public void setUp(Scenario scenario) {
         logger.info(String.format("You are running '%s' scenario", scenario.getName()));
     }
@@ -66,7 +66,7 @@ public class TodoItemSteps extends BaseSteps{
     }
 
 
-    @After
+    @After("@item")
     public void tearDown(Scenario scenario) {
         logger.info(String.format("Scenario '%s' run with status '%s' ",
                 scenario.getName(), scenario.getStatus().toString()));
