@@ -1,3 +1,4 @@
+@item
 Feature: Verify basic check item requirements
   As a user
   I want to check basic functionalities
@@ -17,3 +18,13 @@ Feature: Verify basic check item requirements
     Given a check item with "Test check 3" title
     When I specify that check need to be executed 3 times
     Then check number of executions is equal to 3
+
+  Scenario: Data table item creation
+    Given a check item with following properties:
+      | title                        | numOfExecutions |
+      | Sample check from Data Table | 5               |
+    Then check has a title "Sample check from Data Table"
+    And check number of executions is equal to 5
+
+  Scenario: Move a UAT check item to the archive
+  Scenario: Restore archived a UAT check item

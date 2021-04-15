@@ -10,6 +10,11 @@ public class CheckItem {
         this.numOfExecutions = 1;
     }
 
+    public CheckItem(String title, int numOfExecutions) {
+        this.title = title;
+        this.numOfExecutions = numOfExecutions;
+    }
+
     public String getTitle() {
         return title;
     }

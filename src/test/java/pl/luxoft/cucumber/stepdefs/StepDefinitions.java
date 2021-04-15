@@ -22,8 +22,8 @@ public class StepDefinitions {
 
     @Then("I see some reports generated in target folder")
     public void i_see_some_reports_generated_in_target_folder() {
-        /*Logger logger = LoggerFactory.getLogger(StepDefinitions.class);
-        logger.info("Tu tu tu ru tu");*/
+        Logger logger = LoggerFactory.getLogger(StepDefinitions.class);
+        logger.info("Tu tu tu ru tu");
         System.out.println("Then step");
         Assert.assertTrue(true);
     }

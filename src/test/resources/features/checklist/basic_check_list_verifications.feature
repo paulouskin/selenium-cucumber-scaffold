@@ -1,3 +1,4 @@
+@list
 Feature: Basic check list functionalities verifications
   As a user
   I want to

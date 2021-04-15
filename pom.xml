@@ -17,9 +17,10 @@
         <selenium.version>3.141.59</selenium.version>
         <cucumber.version>6.9.1</cucumber.version>
         <slf4j.version>1.7.30</slf4j.version>
-        <log4j.version>1.2.17</log4j.version>
+        <log4j.version>2.14.1</log4j.version>
         <cucumber.reporting.plugin.version>5.4.0</cucumber.reporting.plugin.version>
         <hamcrest.version>1.3</hamcrest.version>
+        <cucumber.filter.tags></cucumber.filter.tags>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
@@ -34,11 +35,16 @@
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
@@ -117,6 +123,20 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <cucumber.filter.tags>@list</cucumber.filter.tags>
+            </properties>
+        </profile>
+        <profile>
+            <id>qa</id>
+            <properties>
+                <cucumber.filter.tags>@item</cucumber.filter.tags>
+            </properties>
+        </profile>
+    </profiles>
     <build>
         <plugins>
             <plugin>
@@ -141,6 +161,9 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>${failsafe.plugin.version}</version>
                 <configuration>
+                    <systemProperties>
+                        <cucumber.filter.tags>${cucumber.filter.tags}</cucumber.filter.tags>
+                    </systemProperties>
                     <parallel>true</parallel>
                     <threadCount>4</threadCount>
                     <includes>

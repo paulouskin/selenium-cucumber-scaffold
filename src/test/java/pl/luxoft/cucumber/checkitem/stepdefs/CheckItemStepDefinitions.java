@@ -1,10 +1,16 @@
 package pl.luxoft.cucumber.checkitem.stepdefs;
 
+import io.cucumber.datatable.DataTable;
+import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.sl.In;
 import org.junit.Assert;
 import pl.luxoft.cucumber.checkitem.CheckItem;
+
+import java.util.List;
+import java.util.Map;
 
 
 public class CheckItemStepDefinitions {
@@ -46,5 +52,24 @@ public class CheckItemStepDefinitions {
         int actualNumber = item.getNumOfExecutions();
         Assert.assertTrue("Expected number of executions not equal to actual one",
                 numOfExecution == actualNumber);
+    }
+
+    @DataTableType
+    public CheckItem fromMap(Map<String, String> entry){
+        return new CheckItem(entry.get("title"), Integer.parseInt(entry.get("numOfExecutions")));
+    }
+
+    @Given("a check item(s?) with a following properties from data tables:")
+    public void a_check_item_with_a_following_properties(DataTable dataTable) {
+        List<Map<String, String>> itemsMap = dataTable.asMaps(String.class, String.class);
+        Map<String, String> itemAsMap = itemsMap.get(0);
+        item = new CheckItem(itemAsMap.get("title"), Integer.parseInt(itemAsMap.get("numOfExecutions")));
+        System.out.println(item.getTitle());
+    }
+
+
+    @Given("a check item(s?) with following properties:")
+    public void aCheckItemWithFollowingProperties(List<CheckItem> items) {
+        item = items.get(0);
     }
 }
