@@ -92,4 +92,14 @@ public class CheckItemStepDefinitions {
         CheckExecutionStatus requiredStatus = CheckExecutionStatus.valueOf(executionStatus.toUpperCase());
         item.markAs(requiredStatus);
     }
+
+    @When("I archive check item")
+    public void iArchiveCheckItem() {
+        //Homework
+    }
+
+    @Then("check item have {string} state")
+    public void checkItemHaveState(String expectedState) {
+        //Homework
+    }
 }

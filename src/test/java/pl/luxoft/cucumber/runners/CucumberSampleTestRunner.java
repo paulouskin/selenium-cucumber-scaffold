@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "pl.luxoft.cucumber",
+        tags = "@list",
         plugin = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber-pretty",

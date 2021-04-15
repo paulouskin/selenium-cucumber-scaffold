@@ -1,3 +1,4 @@
+@status
 Feature: Check item execution status verifications
 
   As a user
