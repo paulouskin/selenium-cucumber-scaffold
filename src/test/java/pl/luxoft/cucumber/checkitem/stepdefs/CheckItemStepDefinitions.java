@@ -7,7 +7,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.java.sl.In;
 import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import pl.luxoft.cucumber.checkitem.CheckItem;
+import pl.luxoft.cucumber.enums.CheckExecutionStatus;
 
 import java.util.List;
 import java.util.Map;
@@ -71,5 +73,23 @@ public class CheckItemStepDefinitions {
     @Given("a check item(s?) with following properties:")
     public void aCheckItemWithFollowingProperties(List<CheckItem> items) {
         item = items.get(0);
+    }
+
+    @When("I start working on the item check")
+    public void iStartWorkingOnTheItemCheck() {
+        item.startProgress();
+    }
+
+    @Then("check execution status is {string}")
+    public void checkExecutionStatusIs(String executionStatus) {
+        String actualExecutionStatus = item.getStatus().toString();
+        Assert.assertTrue("Actual check execution status not equal to expected one",
+                executionStatus.equalsIgnoreCase(actualExecutionStatus));
+    }
+
+    @When("mark check item as {string}")
+    public void markCheckItemAs(String executionStatus) {
+        CheckExecutionStatus requiredStatus = CheckExecutionStatus.valueOf(executionStatus.toUpperCase());
+        item.markAs(requiredStatus);
     }
 }

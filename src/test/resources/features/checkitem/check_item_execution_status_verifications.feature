@@ -8,16 +8,23 @@ Feature: Check item execution status verifications
   #FAILED
   #PENDING
   #IN PROGRESS
-  #UNKNOWN
+  #UNKNOWN (default)
 
   Background: Create UAT check item
     Given a check items with following properties:
       | title                        | numOfExecutions |
-      | Verify log in functionality  | 2               |
+      | Verify log in functionality  | 1               |
 
   Scenario: Check execution status can be changed
+    When I start working on the item check
+    Then check execution status is "IN_PROGRESS"
 
-  Scenario: New check have UNKNOWN status
+  Scenario: New check item have UNKNOWN status
+    Then check execution status is "UNKNOWN"
+
+  Scenario: Check execution status flow can not omit IN_PROGRESS
+    When mark check item as "PASSED"
+    Then check execution status is "UNKNOWN"
 
   Scenario: Execution status can not be changed for archived checks
 
