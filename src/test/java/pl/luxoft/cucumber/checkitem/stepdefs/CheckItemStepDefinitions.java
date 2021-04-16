@@ -5,11 +5,12 @@ import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.sl.In;
 import org.junit.Assert;
-import org.junit.jupiter.api.Assertions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.luxoft.cucumber.checkitem.CheckItem;
 import pl.luxoft.cucumber.enums.CheckExecutionStatus;
+import pl.luxoft.cucumber.enums.CheckItemState;
 
 import java.util.List;
 import java.util.Map;
@@ -18,10 +19,11 @@ import java.util.Map;
 public class CheckItemStepDefinitions {
 
     private CheckItem item;
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Given("I have an access to application")
     public void i_have_an_access_to_application() {
-        System.out.println("I am logged in...");
+        logger.info("I am logged in...");
     }
 
     @Given("a check item with {string} title")
@@ -95,11 +97,13 @@ public class CheckItemStepDefinitions {
 
     @When("I archive check item")
     public void iArchiveCheckItem() {
-        //Homework
+       item.setState(CheckItemState.ARCHIVED);
     }
 
     @Then("check item have {string} state")
     public void checkItemHaveState(String expectedState) {
-        //Homework
+        String actualState = item.getState().toString();
+        Assert.assertTrue("Actual check execution status not equal to expected one",
+                expectedState.equalsIgnoreCase(actualState));
     }
 }

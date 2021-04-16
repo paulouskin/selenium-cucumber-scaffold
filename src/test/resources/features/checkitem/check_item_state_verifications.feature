@@ -11,7 +11,9 @@ Feature: Check item state verifications
       | title                                | numOfExecutions |
       | Verify change password functionality | 1               |
 
-    #HW: make scenario pass
+
   Scenario: Check can be marked as ARCHIVED
     When I archive check item
     Then check item have "ARCHIVED" state
+
+  Scenario: Check item default state is ACTIVE
