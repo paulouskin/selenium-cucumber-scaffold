@@ -1,6 +1,8 @@
 package pl.luxoft.cucumber.checkitem.stepdefs;
 
 import io.cucumber.datatable.DataTable;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -20,6 +22,16 @@ public class CheckItemStepDefinitions {
 
     private CheckItem item;
     private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    @Before("@item")
+    public void scenarioSetUp() {
+        logger.info("This step will run before each scenario.");
+    }
+
+    @After("@ddt")
+    public void scenarioTearDown() {
+        logger.info("This step will run after each scenario.");
+    }
 
     @Given("I have an access to application")
     public void i_have_an_access_to_application() {

@@ -1,0 +1,21 @@
+Feature: A lot of stuff to do to practice Cucumber
+
+  Scenario: Remove permanently a UAT check item
+  Scenario: Move a UAT check item to the archive
+  Scenario: Restore archived a UAT check item
+
+  Scenario: Should not be able to add an item without title
+  Scenario: Should be able to put detail description of a UAT check items
+
+  Scenario: Should be able to define priority
+  Scenario: Change priority for any item
+  Scenario: Remove priority for any item
+
+  Scenario: Should be able to see history of changes made on a UAT check item
+
+  Scenario: Assign status of items per day saved automatically
+  Scenario: Change status of the item
+
+  Scenario: Assign a tool (tools) being used for performing a UAT check item
+  Scenario: Amend a tool (tools) being used for performing a UAT check item
+  Scenario: Remove a tool (tools) being used for performing a UAT check item
