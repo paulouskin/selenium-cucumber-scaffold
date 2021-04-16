@@ -18,6 +18,11 @@ public class CheckList {
         this.items = new ArrayList<>();
     }
 
+    public CheckList(String name, List<CheckItem> items) {
+        this.name = name;
+        this.items = new ArrayList<>(items);
+    }
+
 
     public void add(CheckItem checkItem) {
         items.add(checkItem);

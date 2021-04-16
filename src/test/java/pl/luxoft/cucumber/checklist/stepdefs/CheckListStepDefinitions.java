@@ -7,6 +7,8 @@ import org.junit.Assert;
 import pl.luxoft.cucumber.checkitem.CheckItem;
 import pl.luxoft.cucumber.checklist.CheckList;
 
+import java.util.List;
+
 public class CheckListStepDefinitions {
 
     private CheckList checkList;
@@ -15,6 +17,17 @@ public class CheckListStepDefinitions {
     public void a_check_list_named(String title) {
         checkList = new CheckList(title);
     }
+
+    @Given("a check list named {string} with next items:")
+    public void a_check_list_named_with_next_items(String name, List<CheckItem> items) {
+        checkList = getCheckListFromTable(name, items);
+    }
+
+    private CheckList getCheckListFromTable(String name, List<CheckItem> items) {
+        return new CheckList(name, items);
+    }
+
+
     @When("I add a {string} check list item")
     public void i_add_a_check_list_item(String checkItemTitle) {
         checkList.add(new CheckItem(checkItemTitle));
