@@ -1,3 +1,4 @@
+@ui
 Feature: Privacy policy
   As a new shopper John
   In order to proceed with shopping

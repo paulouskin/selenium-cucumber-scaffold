@@ -29,6 +29,9 @@ public class EtsySteps {
 
     public static final String POPULARS_AREA = "//ul[contains(@class,'wt-list-unstyled')]";
     public static final String SIGNIN_BUTTON = "//button[contains(@class,'select-signin')]";
+    public static final String SHOP_SELECTIONS = "//a[contains(@class,'wt-card__link')]";
+    public static final String SUBSCRIBE_AREA = "//input[@id='email-list-signup-email-input']";
+    public static final String SEARCH_QUERY = "//input[@name='search_query']";
 
     Logger logger = LoggerFactory.getLogger(EtsySteps.class);
 
@@ -36,19 +39,19 @@ public class EtsySteps {
 
     private EtsyPagePO landingPage;
 
-    /*@Before
+    @Before("@ui")
     public void scenarioSetUp() {
         WebDriverManager.chromedriver().setup();
-        //logger.info("Starting web driver instance...");
+        logger.info("Starting web driver instance...");
         driver = new ChromeDriver();
         landingPage = new EtsyPagePO(driver);
-    }*/
+    }
 
-    /*@After
+    @After("@ui")
     public void scenarioTearDown() {
-        //logger.info("Closing web driver instance...");
+        logger.info("Closing web driver instance...");
         driver.quit();
-    }*/
+    }
 
     @Given("{string} on the shop landing page")
     public void on_the_shop_landing_page(String string){
@@ -72,7 +75,7 @@ public class EtsySteps {
     @And("he search for {string}")
     public void heSearchFor(String item) {
         WebElement searchField = new WebDriverWait(driver, 20)
-                .until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@name='search_query']")));
+                .until(ExpectedConditions.elementToBeClickable(By.xpath(SEARCH_QUERY)));
         searchField.sendKeys(item);
         searchField.sendKeys(Keys.ENTER);
     }
@@ -85,8 +88,7 @@ public class EtsySteps {
         List<String> words = List.of(query.split(" "));
         List<List<String>> splitedTitles = searchResultsTitles
                 .stream()
-                .map(el -> el.getText().toLowerCase())
-                .map(title -> List.of(title.split(" ")))
+                .map(el -> List.of(el.getText().toLowerCase().split(" ")))
                 .collect(Collectors.toList());
         boolean pass = splitedTitles.stream()
                 .anyMatch(item -> item.containsAll(words));
@@ -112,7 +114,7 @@ public class EtsySteps {
     @And("subscribe area is visible")
     public void subscribeAreaIsVisible() {
         WebElement populars = new WebDriverWait(driver, 5).until(
-                ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='email-list-signup-email-input']"))
+                ExpectedConditions.visibilityOfElementLocated(By.xpath(SUBSCRIBE_AREA))
         );
         Assertions.assertTrue(populars.isDisplayed());
 
@@ -121,8 +123,7 @@ public class EtsySteps {
     @Then("shop selections is visible")
     public void shopSelectionsIsVisible() {
         WebElement populars = new WebDriverWait(driver, 5).until(
-                ExpectedConditions.visibilityOfElementLocated(
-                        By.xpath("//*[@id='content']/div/div[6]/div/div/div/div/ul/li[1]/a"))
+                ExpectedConditions.visibilityOfElementLocated(By.xpath(SHOP_SELECTIONS))
         );
         Assertions.assertTrue(populars.isDisplayed());
     }

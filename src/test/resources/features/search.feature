@@ -1,4 +1,4 @@
-# outline
+@ui
 Feature: Search for an item
   As a user
   I want to search for an particular item

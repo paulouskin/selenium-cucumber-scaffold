@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Assertions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.qaupskilling.cucumber.model.User;
+import pl.qaupskilling.cucumber.model.UserResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,10 +48,11 @@ public class ReqresSteps {
 
     @Then("user has a email {string}")
     public void user_has_a_email(String expectedEmail) {
-        //response.assertThat().body("data.email", equalTo(expectedEmail));
-        String actualEmail = response.extract().body().path("data.email");
-        //Map<String, String> user = response.extract().body().path("data");
-        Assertions.assertEquals(expectedEmail, actualEmail);
+        //response.assertThat().body("data.email", equalTo(expectedEmail)); <-- build-in assertions
+        //String actualEmail = response.extract().body().path("data.email"); // extract only email
+        UserResponse user = response.extract().body().jsonPath().getObject("data", UserResponse.class);
+        //Map<String, String> user = response.extract().body().path("data"); <--- extract user as a map
+        Assertions.assertEquals(expectedEmail, user.getEmail());
     }
 
     @When("I fetch all users from page {int}")
@@ -66,7 +68,7 @@ public class ReqresSteps {
     @Then("user list contains {int} users")
     public void userListContainsUsers(int numOfUsers) {
         int actualNumOfUsers = response.extract().path("per_page");
-        List<Map<String, String>> users = response.extract().path("data");
+        List<Map<String, String>> users = response.extract().path("data"); // <-- get users as list of maps
         Assertions.assertEquals(numOfUsers, users.size());
     }
 

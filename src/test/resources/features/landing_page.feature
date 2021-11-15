@@ -1,4 +1,4 @@
-# background
+@ui
 Feature: Landing page basic verifications
   As an admin Ed
   In order to have all things set up

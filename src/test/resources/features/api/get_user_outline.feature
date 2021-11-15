@@ -1,3 +1,4 @@
+@api
 Feature: User API verifications
 
   Scenario Outline: Get user with id and verify email

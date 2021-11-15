@@ -1,3 +1,4 @@
+@api
 Feature: User creation verification
 
   Scenario: Create user - happy path

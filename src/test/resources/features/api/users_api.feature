@@ -1,3 +1,4 @@
+@api
 Feature: User API verifications
 
   Scenario: Get all users for subscription audition

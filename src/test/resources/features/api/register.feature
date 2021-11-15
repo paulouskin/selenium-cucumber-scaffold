@@ -1,3 +1,4 @@
+@api
 Feature: Register user
 
   Scenario: User have been registered successfully
