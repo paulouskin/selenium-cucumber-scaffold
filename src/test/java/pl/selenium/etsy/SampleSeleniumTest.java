@@ -1,31 +1,32 @@
-package pl.globallogic.etsy;
+package pl.selenium.etsy;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class SampleEtsyWebDriverManagerTest {
+public class SampleSeleniumTest {
 
     private WebDriver driver;
 
     @BeforeEach
     public void setUp() {
         WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
     }
 
     @Test
     public void shouldOpenGooglePageAndSearchForSelenium() {
-        driver = new ChromeDriver();
+        //System.setProperty("webdriver.chrome.driver", "C:\\Dev\\chromedriver.exe");
         driver.get("http://www.google.com");
-        driver.findElement(By.id("L2AGLb")).click();
-        driver.findElement(By.name("q")).sendKeys("Selenium");
-        driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
+        WebElement acceptBtn = driver.findElement(By.id("L2AGLb"));
+        acceptBtn.click();
+        WebElement queryField = driver.findElement(By.name("q"));
+        queryField.sendKeys("Selenium");
+        queryField.sendKeys(Keys.ENTER);
         Assertions.assertTrue(driver.getTitle().toLowerCase().contains("selenium"));
     }
 
