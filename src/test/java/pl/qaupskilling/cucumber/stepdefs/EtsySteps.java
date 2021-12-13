@@ -8,19 +8,16 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.qaupskilling.support.pageobject.PrivacyPolicyModalPO;
-
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
-import java.util.concurrent.TimeUnit;
 
 public class EtsySteps {
 
@@ -38,7 +35,7 @@ public class EtsySteps {
 
     private Logger logger = LoggerFactory.getLogger(EtsySteps.class);
 
-    @Before
+    @Before("@ui")
     public void scenarioSetUp(){
         logger.info("Scenario set up");
         WebDriverManager.chromedriver().setup();
@@ -47,7 +44,7 @@ public class EtsySteps {
 
     @Given("{string} is on the main page")
     public void is_on_the_main_page(String persona) {
-        System.out.println("Our user is " + persona);
+        System.out.println("Current thread: " + Thread.currentThread().getId());
         driver.get("https://www.etsy.com");
         privacyPolicyPage = new PrivacyPolicyModalPO(driver);
     }
@@ -125,7 +122,7 @@ public class EtsySteps {
         Assertions.assertTrue(updateSettingsTitle.isDisplayed());
     }
 
-    @After
+    @After("@ui")
     public void scenarioCleanUp(){
         driver.quit();
     }

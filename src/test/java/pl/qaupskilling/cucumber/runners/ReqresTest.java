@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features",
+        features = "src/test/resources/features/reqres",
         glue = "pl.qaupskilling.cucumber.stepdefs",
         plugin = {
                 "pretty",
@@ -15,5 +15,5 @@ import org.junit.runner.RunWith;
                 "rerun:target/cucumber-reports/rerun.txt"
         }
 )
-public class CucumberSampleTestRunner {
+public class ReqresTest {
 }

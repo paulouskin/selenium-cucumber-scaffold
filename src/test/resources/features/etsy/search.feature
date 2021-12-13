@@ -1,3 +1,4 @@
+@ui
 Feature: Search basic verification
   As a
   I want to

@@ -1,4 +1,5 @@
 # this is a comment about session end
+@ui
 Feature: Privacy policy setup
   As a legal department
   I want to introduce privacy policy settings as early as possible
