@@ -1,3 +1,4 @@
+@api
 Feature: User API basic checks
   As a test automation engineer
   I want to test my backend developers result of work
@@ -27,5 +28,10 @@ Feature: User API basic checks
     Then user id have been returned in the response
 
   Scenario: Update user information
+    Given user service is up and running
+    When we update the user with id "10" with following data:
+      | name | job       |
+      | Viki | Test Lead |
+    Then user job is "Test Lead"
 
   Scenario: Delete user

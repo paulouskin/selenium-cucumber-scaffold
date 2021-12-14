@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.qaupskilling.support.pageobject.PrivacyPolicyModalPO;
+import pl.qaupskilling.etsy.pageobject.PrivacyPolicyModalPO;
 
 public class EtsySteps {
 
