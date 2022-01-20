@@ -63,9 +63,7 @@ public class PrivacyPolicyModalPO extends BasePageObject{
     }
 
     public boolean isModalInvisible() {
-        return new WebDriverWait(driver, DEFAULT_WAIT_TIME).until(
-                ExpectedConditions.invisibilityOf(acceptPolicyBtn)
-        );
+        return isElementInvisible(acceptPolicyBtn);
     }
 
 }

@@ -3,6 +3,7 @@ package pl.qaupskilling.etsy.pageobject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePageObject {
@@ -18,6 +19,12 @@ public class BasePageObject {
     protected WebElement findElement(By locator) {
         return new WebDriverWait(driver, DEFAULT_WAIT_TIME).until(
                 driver -> driver.findElement(locator)
+        );
+    }
+
+    protected boolean isElementInvisible(WebElement element) {
+        return new WebDriverWait(driver, DEFAULT_WAIT_TIME).until(
+                ExpectedConditions.invisibilityOf(element)
         );
     }
 }
