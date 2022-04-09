@@ -19,6 +19,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.qaupskilling.etsy.pageobject.PrivacyPolicyModalPO;
 
+import java.time.Duration;
+
 public class EtsySteps {
 
     private static final String PRIVACY_POLICY_ACCEPT_BTN = "//button[@data-gdpr-single-choice-accept='true']";
@@ -116,7 +118,7 @@ public class EtsySteps {
     @Then("update policy settings modal is visible")
     public void updatePolicySettingsModalIsVisible() {
         WebElement updateSettingsTitle =//driver.findElement(By.xpath(UPDATE_SETTINGS_TITLE));
-                new WebDriverWait(driver, 5).until(
+                new WebDriverWait(driver, Duration.ofSeconds(5)).until(
                         ExpectedConditions.visibilityOfElementLocated(By.xpath(UPDATE_SETTINGS_TITLE))
                 );
         Assertions.assertTrue(updateSettingsTitle.isDisplayed());

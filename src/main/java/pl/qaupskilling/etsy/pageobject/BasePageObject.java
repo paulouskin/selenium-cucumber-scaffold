@@ -6,9 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 public class BasePageObject {
 
-    protected final int DEFAULT_WAIT_TIME = 10;
+    protected final Duration DEFAULT_WAIT_TIME = Duration.ofSeconds(10);
 
     protected WebDriver driver;
 
