@@ -8,7 +8,7 @@
     <artifactId>selenium-cucumber-qa-upskilling</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
-        <compile.java.version>12</compile.java.version>
+        <compile.java.version>17</compile.java.version>
         <compiler.plugin.version>3.8.1</compiler.plugin.version>
         <surefire.plugin.version>2.22.2</surefire.plugin.version>
         <failsafe.plugin.version>2.22.2</failsafe.plugin.version>
